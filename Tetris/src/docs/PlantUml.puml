@@ -1,0 +1,7 @@
+@startuml
+class Figure {
+    - int [][] definition= new int [4][4]
+}
+
+
+@enduml
