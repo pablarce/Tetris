@@ -4,52 +4,77 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Prueba {
+public class Prueba{
     private JFrame frame;
-    private JPanel panel;
-    private int squareX = 50;
-    private int squareY = 50;
+    private JPanel figurePanel;
+    private JPanel gamePanel;
+    private int gamePanelWidth = 500;
+    private int gamePanelHeight = 600;
+    private int pixelX = 50;
+    private int pixelY = 10;
+    private int pixelWidth = 20;
+    private int pixelHeight = 20;
+    private int bottomLimit = gamePanelHeight - pixelHeight - 5;
 
     public Prueba() {
-        frame = new JFrame("Mi ventana");
+        frame = new JFrame("Tetris");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(700, 800);
+        frame.setLocationRelativeTo(null);
+        frame.setMinimumSize(new Dimension(520, 640));
 
-        panel = new JPanel() {
+        gamePanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.WHITE);
+                g.fillRect(0, 0, gamePanelWidth, gamePanelHeight);
+                g.setColor(Color.BLACK);
+                g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);
+            }
+        };
+        gamePanel.setLayout(null);
+        frame.add(gamePanel);
+
+        figurePanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(Color.YELLOW);
-                g.fillRect(squareX, squareY, 20, 20);
+                g.fillRect(pixelX, pixelY, pixelWidth, pixelHeight);
                 g.setColor(Color.BLACK);
-                g.drawRect(squareX, squareY, 20, 20);
+                g.drawRect(pixelX, pixelY, pixelWidth, pixelHeight);
             }
         };
-        frame.add(panel);
-        panel.setFocusable(true);
-        panel.requestFocusInWindow();
+        figurePanel.setOpaque(false);
+        figurePanel.setBounds(0, 0, gamePanelWidth, gamePanelHeight);
+        gamePanel.add(figurePanel);
 
-        panel.addKeyListener(new KeyListener() {
+        gamePanel.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
 
             @Override
             public void keyPressed(KeyEvent e) {
-                int panelHeight = panel.getHeight();
-                int squareHeight = 20;
                 int key = e.getKeyCode();
                 switch (key) {
-                    case KeyEvent.VK_DOWN :
-                        if (squareY + squareHeight < panelHeight)
-                            {squareY += 20;}
+                    case KeyEvent.VK_DOWN:
+                        if (pixelY + pixelHeight < bottomLimit) {
+                            pixelY += 20;
+                        }
                         break;
                     case KeyEvent.VK_LEFT:
-                        squareX -= 20;
+                        if (pixelX > 10) {
+                            pixelX -= 20;
+                        }
                         break;
                     case KeyEvent.VK_RIGHT:
-                        squareX += 20;
+                        if (pixelX + pixelWidth < gamePanelWidth - 10) {
+                            pixelX += 20;
+                        }
                         break;
                 }
-                panel.repaint();
+                figurePanel.repaint();
             }
 
             @Override
@@ -59,17 +84,17 @@ public class Prueba {
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int panelHeight = panel.getHeight();
-                int squareHeight = 20;
-                if (squareY + squareHeight < panelHeight) {
-                    squareY += 20;
+                if (pixelY + pixelHeight < bottomLimit) {
+                    pixelY += 20;
                 }
-                panel.repaint();
+                gamePanel.repaint();
             }
         });
         timer.start();
 
-        frame.setSize(600, 600);
+        gamePanel.setFocusable(true);
+        gamePanel.requestFocusInWindow();
+
         frame.setVisible(true);
     }
 }
