@@ -1,4 +1,5 @@
 import main.Figure;
+import main.Prueba;
 import main.Shapes.*;
 
 public class Main {
@@ -26,6 +27,8 @@ public class Main {
         figure6.draw();
         spacing();
         figure7.draw();
+
+        new Prueba();
 
     }
     static void spacing(){
