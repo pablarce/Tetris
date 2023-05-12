@@ -11,13 +11,22 @@ public abstract class Figure {
         this.posX = posX;
         this.posY = posY;
     }
-    public void draw(){
+    public void draw(){ //Only for testing purposes
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
                 System.out.print(definition[i][j] + "  ");
             }
             System.out.println();
         }
+    }
+    public int getPosX(){
+        return posX;
+    }
+    public int getPosY(){
+        return posY;
+    }
+    public String getColor(){
+        return color;
     }
     public void changeDefinition(int [][] newDefinition){
         this.definition = newDefinition;
