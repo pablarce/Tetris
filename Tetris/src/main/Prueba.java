@@ -61,22 +61,18 @@ public class Prueba{
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
-                switch (key) {
-                    case KeyEvent.VK_DOWN:
-                        if (pixelY + pixelHeight < bottomLimit) {
-                            pixelY += 20;
-                        }
-                        break;
-                    case KeyEvent.VK_LEFT:
-                        if (pixelX > 10 && pixelY + pixelHeight < bottomLimit) {
-                            pixelX -= 20;
-                        }
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        if (pixelX + pixelWidth < gamePanelWidth - 10 && pixelY + pixelHeight < bottomLimit) {
-                            pixelX += 20;
-                        }
-                        break;
+                if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+                    if (pixelY + pixelHeight < bottomLimit) {
+                        pixelY += 20;
+                    }
+                } else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
+                    if (pixelX > 10 && pixelY + pixelHeight < bottomLimit) {
+                        pixelX -= 20;
+                    }
+                } else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
+                    if (pixelX + pixelWidth < gamePanelWidth - 10 && pixelY + pixelHeight < bottomLimit) {
+                        pixelX += 20;
+                    }
                 }
                 figurePanel.repaint();
             }
@@ -102,8 +98,8 @@ public class Prueba{
         frame.setVisible(true);
     }
 
-    public static Figure generateFigure(){ //Does nothing yet, on progress to be implemented
-        Random random = new Random();
+    public static Figure generateFigure(){ //Does nothing yet, on progress to be implemented. The idea is to generate a random figure.
+        Random random = new Random(); // that will be added to a array of figures. Then, the figure will be drawn on the gamePanel.
         int figure = random.nextInt(7);
         switch (figure) {
             case 0:
