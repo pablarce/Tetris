@@ -28,30 +28,25 @@ public abstract class Figure {
         return posY;
     }
     public Color getColor(){
-        if (color.equals("red")) {
-            return Color.RED;
+        switch(color) {
+            case "red":
+                return Color.RED;
+            case "blue":
+                return Color.BLUE;
+            case "green":
+                return Color.GREEN;
+            case "yellow":
+                return Color.YELLOW;
+            case "orange":
+                return Color.ORANGE;
+            case "purple":
+                return new Color(0x800080);
+            case "pink":
+                return Color.PINK;
+            default:
+                return Color.BLACK;
         }
-        else if (color.equals("blue")) {
-            return Color.BLUE;
-        }
-        else if (color.equals("green")) {
-            return Color.GREEN;
-        }
-        else if (color.equals("yellow")) {
-            return Color.YELLOW;
-        }
-        else if (color.equals("orange")) {
-            return Color.ORANGE;
-        }
-        else if (color.equals("purple")) {
-            return new Color(0x800080);
-        }
-        else if (color.equals("pink")) {
-            return Color.PINK;
-        }
-        else {
-            return Color.BLACK;
-        }
+
     }
     public void changeDefinition(int [][] newDefinition){
         this.definition = newDefinition;

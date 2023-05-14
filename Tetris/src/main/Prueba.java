@@ -99,25 +99,61 @@ public class Prueba{
     }
 
     public static Figure generateFigure(){ //Does nothing yet, on progress to be implemented. The idea is to generate a random figure.
-        Random random = new Random(); // that will be added to a array of figures. Then, the figure will be drawn on the gamePanel.
-        int figure = random.nextInt(7);
-        switch (figure) {
-            case 0:
-                return new Square("red", 0, 0);
+        Random random = new Random(); // that will be added to an array of figures. Then, the figure will be drawn on the gamePanel.
+        int figure = random.nextInt(6);
+        Figure newFigure;
+        switch(figure){
             case 1:
-                return new Tshape("blue", 10,10);
+                newFigure = new Lshape(getRandomColor(), 0, 0);
+                break;
             case 2:
-                return new Straigth("green", 20,20);
+                newFigure = new Jshape(getRandomColor(), 0, 0);
+                break;
             case 3:
-                return new Lshape("yellow", 30,30);
+                newFigure = new Sshape(getRandomColor(), 0, 0);
+                break;
             case 4:
-                return new Sshape("orange", 40,40);
+                newFigure = new Straigth(getRandomColor(), 0, 0);
+                break;
             case 5:
-                return new Zshape("purple", 50,50);
+                newFigure = new Tshape(getRandomColor(), 0, 0);
+                break;
             case 6:
-                return new Jshape("pink", 60,60);
+                newFigure = new Zshape(getRandomColor(), 0, 0);
+                break;
             default:
-                return null;
+                newFigure = new Square(getRandomColor(), 0, 0);
+                break;
         }
+        return newFigure;
+    }
+    public static String getRandomColor(){
+        Random random = new Random();
+        int color = random.nextInt(6);
+        String newColor;
+        switch(color){
+            case 1:
+                newColor = "blue";
+                break;
+            case 2:
+                newColor = "green";
+                break;
+            case 3:
+                newColor = "yellow";
+                break;
+            case 4:
+                newColor = "orange";
+                break;
+            case 5:
+                newColor = "purple";
+                break;
+            case 6:
+                newColor = "pink";
+                break;
+            default:
+                newColor = "red";
+                break;
+        }
+        return newColor;
     }
 }
