@@ -32,4 +32,5 @@ public abstract class Figure {
         this.definition = newDefinition;
     }
 
+
 }
