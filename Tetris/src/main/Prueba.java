@@ -3,24 +3,24 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Random;
 import main.Shapes.*;
 
 public class Prueba{
-    private ArrayList<Figure> figures = new ArrayList<>();
     private JFrame frame;
     private JPanel figurePanel;
     private JPanel gamePanel;
     private int gamePanelWidth = 500;
     private int gamePanelHeight = 600;
-    private int pixelX = 50;
-    private int pixelY = 10;
+    private int pixelX;
+    private int pixelY;
     private int pixelWidth = 20;
     private int pixelHeight = 20;
     private int bottomLimit = gamePanelHeight - pixelHeight - 5;
 
-    public Prueba() {
+    public Prueba(Figure figure) {
+        pixelX = figure.getPosX();
+        pixelY = figure.getPosY();
         frame = new JFrame("Tetris");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 800);
@@ -44,8 +44,7 @@ public class Prueba{
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                Color selectedColor = new Color(0x00FF00);
-                g.setColor(selectedColor);
+                g.setColor(figure.getColor());
                 g.fillRect(pixelX, pixelY, pixelWidth, pixelHeight);
                 g.setColor(Color.BLACK);
                 g.drawRect(pixelX, pixelY, pixelWidth, pixelHeight);
@@ -103,7 +102,7 @@ public class Prueba{
         frame.setVisible(true);
     }
 
-    public static Figure generateFigure(){
+    public static Figure generateFigure(){ //Does nothing yet, on progress to be implemented
         Random random = new Random();
         int figure = random.nextInt(7);
         switch (figure) {

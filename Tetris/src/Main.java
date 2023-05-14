@@ -6,13 +6,13 @@ public class Main {
     public static void main(String[] args) {
         Figure figure1, figure2, figure3, figure4, figure5, figure6, figure7;
 
-        figure1 = new Square("red", 0, 0);
+        figure1 = new Square("red", 0, 10);
         figure2 = new Tshape("blue", 10,10);
-        figure3 = new Straigth("green", 20,20);
-        figure4 = new Lshape("yellow", 30,30);
-        figure5 = new Sshape("orange", 40,40);
-        figure6 = new Zshape("purple", 50,50);
-        figure7 = new Jshape("pink", 60,60);
+        figure3 = new Straigth("green", 20,10);
+        figure4 = new Lshape("yellow", 30,10);
+        figure5 = new Sshape("orange", 40,10);
+        figure6 = new Zshape("purple", 50,10);
+        figure7 = new Jshape("pink", 60,10);
 
         figure1.draw();
         spacing();
@@ -28,7 +28,7 @@ public class Main {
         spacing();
         figure7.draw();
 
-        new Prueba();
+        new Prueba(figure5);
 
     }
     static void spacing(){
