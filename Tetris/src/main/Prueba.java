@@ -18,7 +18,8 @@ public class Prueba{
     private int pixelHeight = 20;
     private int bottomLimit = gamePanelHeight - pixelHeight - 5;
 
-    public Prueba(Figure figure) {
+    public Prueba() {
+        Figure figure = generateFigure();
         pixelX = figure.getPosX();
         pixelY = figure.getPosY();
         frame = new JFrame("Tetris");
@@ -101,28 +102,30 @@ public class Prueba{
     public static Figure generateFigure(){ //Does nothing yet, on progress to be implemented. The idea is to generate a random figure.
         Random random = new Random(); // that will be added to an array of figures. Then, the figure will be drawn on the gamePanel.
         int figure = random.nextInt(6);
+        String color = getRandomColor();
+        int posX = getRandomX();
         Figure newFigure;
         switch(figure){
             case 1:
-                newFigure = new Lshape(getRandomColor(), 0, 0);
+                newFigure = new Square(color, posX, 10);
                 break;
             case 2:
-                newFigure = new Jshape(getRandomColor(), 0, 0);
+                newFigure = new Tshape(color, posX, 10);
                 break;
             case 3:
-                newFigure = new Sshape(getRandomColor(), 0, 0);
+                newFigure = new Straigth(color, posX, 10);
                 break;
             case 4:
-                newFigure = new Straigth(getRandomColor(), 0, 0);
+                newFigure = new Lshape(color, posX, 10);
                 break;
             case 5:
-                newFigure = new Tshape(getRandomColor(), 0, 0);
+                newFigure = new Sshape(color, posX, 10);
                 break;
             case 6:
-                newFigure = new Zshape(getRandomColor(), 0, 0);
+                newFigure = new Zshape(color, posX, 10);
                 break;
             default:
-                newFigure = new Square(getRandomColor(), 0, 0);
+                newFigure = new Jshape(color, posX, 10);
                 break;
         }
         return newFigure;
@@ -155,5 +158,10 @@ public class Prueba{
                 break;
         }
         return newColor;
+    }
+    public static int getRandomX(){
+        // random number from 100 to 400
+        Random random = new Random();
+        return random.nextInt(300) + 100;
     }
 }

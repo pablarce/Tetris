@@ -10,7 +10,7 @@ public class Main {
         figure2 = new Tshape("blue", 10,10);
         figure3 = new Straigth("green", 20,10);
         figure4 = new Lshape("yellow", 30,10);
-        figure5 = new Sshape("orange", 40,10);
+        figure5 = new Sshape("orange", 400,10);
         figure6 = new Zshape("purple", 50,10);
         figure7 = new Jshape("pink", 60,10);
 
@@ -28,7 +28,7 @@ public class Main {
         spacing();
         figure7.draw();
 
-        new Prueba(figure5);
+        new Prueba();
 
     }
     static void spacing(){
