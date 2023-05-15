@@ -38,11 +38,5 @@ public class GamePanel {
         return gamePanel;
     }
 
-    public int getGamePanelWidth() {
-        return gamePanelWidth;
-    }
 
-    public int getGamePanelHeight() {
-        return gamePanelHeight;
-    }
 }

@@ -7,10 +7,9 @@ import java.util.Random;
 import main.Shapes.*;
 
 public class Prueba{
-    private JFrame frame;
     private JPanel figurePanel;
-    private int gamePanelWidth = 320;
-    private int gamePanelHeight = 640;
+    private int gamePanelWidth = 320; // We could get this from gamePanel, but if we do that we get a not accurate value
+    private int gamePanelHeight = 640; // and the program doesn't work if you call gamePanel.getHeight() / gamePanel.getWidth()
     private int pixelX;
     private int pixelY;
     private int pixelWidth = 32;
@@ -22,7 +21,7 @@ public class Prueba{
         pixelX = figure.getPosX();
         pixelY = figure.getPosY();
         InitialFrame MyInitialFrame = new InitialFrame();
-        frame = MyInitialFrame.getFrame();
+        JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
         JPanel gamePanel = MyGamePanel.getGamePanel();
         gamePanel.setLayout(null);
@@ -84,11 +83,12 @@ public class Prueba{
         gamePanel.requestFocusInWindow();
 
         frame.setVisible(true);
+
     }
 
     public static Figure generateFigure(){
         Random random = new Random();
-        int figure = random.nextInt(6);
+        int figure = random.nextInt(7);
         String color = getRandomColor();
         int posX = getRandomX();
         Figure newFigure;
@@ -119,7 +119,7 @@ public class Prueba{
     }
     public static String getRandomColor(){
         Random random = new Random();
-        int color = random.nextInt(6);
+        int color = random.nextInt(7);
         String newColor;
         switch(color){
             case 1:
