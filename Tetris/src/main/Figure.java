@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.*;
+
 public abstract class Figure {
     private String color;
     private int [][] definition = new int [4][4];
@@ -25,8 +27,26 @@ public abstract class Figure {
     public int getPosY(){
         return posY;
     }
-    public String getColor(){
-        return color;
+    public Color getColor(){
+        switch(color) {
+            case "red":
+                return Color.RED;
+            case "blue":
+                return Color.BLUE;
+            case "green":
+                return Color.GREEN;
+            case "yellow":
+                return Color.YELLOW;
+            case "orange":
+                return Color.ORANGE;
+            case "purple":
+                return new Color(0x800080);
+            case "pink":
+                return Color.PINK;
+            default:
+                return Color.BLACK;
+        }
+
     }
     public void changeDefinition(int [][] newDefinition){
         this.definition = newDefinition;
