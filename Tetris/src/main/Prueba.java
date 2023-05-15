@@ -9,35 +9,22 @@ import main.Shapes.*;
 public class Prueba{
     private JFrame frame;
     private JPanel figurePanel;
-    private JPanel gamePanel;
-    private int gamePanelWidth = 500;
-    private int gamePanelHeight = 600;
+    private int gamePanelWidth = 320;
+    private int gamePanelHeight = 640;
     private int pixelX;
     private int pixelY;
-    private int pixelWidth = 20;
-    private int pixelHeight = 20;
-    private int bottomLimit = gamePanelHeight - pixelHeight - 5;
+    private int pixelWidth = 32;
+    private int pixelHeight = 32;
+    private int bottomLimit = gamePanelHeight;
 
     public Prueba() {
         Figure figure = generateFigure();
         pixelX = figure.getPosX();
         pixelY = figure.getPosY();
-        frame = new JFrame("Tetris");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 800);
-        frame.setLocationRelativeTo(null);
-        frame.setMinimumSize(new Dimension(520, 640));
-
-        gamePanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(Color.white);
-                g.fillRect(0, 0, gamePanelWidth, gamePanelHeight);
-                g.setColor(Color.BLACK);
-                g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);
-            }
-        };
+        InitialFrame MyInitialFrame = new InitialFrame();
+        frame = MyInitialFrame.getFrame();
+        GamePanel MyGamePanel = new GamePanel();
+        JPanel gamePanel = MyGamePanel.getGamePanel();
         gamePanel.setLayout(null);
         frame.add(gamePanel);
 
@@ -64,15 +51,15 @@ public class Prueba{
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
                     if (pixelY + pixelHeight < bottomLimit) {
-                        pixelY += 20;
+                        pixelY += 32;
                     }
                 } else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-                    if (pixelX > 10 && pixelY + pixelHeight < bottomLimit) {
-                        pixelX -= 20;
+                    if (pixelX > 0) {
+                        pixelX -= 32;
                     }
                 } else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-                    if (pixelX + pixelWidth < gamePanelWidth - 10 && pixelY + pixelHeight < bottomLimit) {
-                        pixelX += 20;
+                    if (pixelX + pixelWidth < gamePanelWidth) {
+                        pixelX += 32;
                     }
                 }
                 figurePanel.repaint();
@@ -86,7 +73,7 @@ public class Prueba{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (pixelY + pixelHeight < bottomLimit) {
-                    pixelY += 20;
+                    pixelY += 32;
                 }
                 gamePanel.repaint();
             }
@@ -107,25 +94,25 @@ public class Prueba{
         Figure newFigure;
         switch(figure){
             case 1:
-                newFigure = new Square(color, posX, 10);
+                newFigure = new Square(color, posX, 32);
                 break;
             case 2:
-                newFigure = new Tshape(color, posX, 10);
+                newFigure = new Tshape(color, posX, 32);
                 break;
             case 3:
-                newFigure = new Straigth(color, posX, 10);
+                newFigure = new Straigth(color, posX, 32);
                 break;
             case 4:
-                newFigure = new Lshape(color, posX, 10);
+                newFigure = new Lshape(color, posX, 32);
                 break;
             case 5:
-                newFigure = new Sshape(color, posX, 10);
+                newFigure = new Sshape(color, posX, 32);
                 break;
             case 6:
-                newFigure = new Zshape(color, posX, 10);
+                newFigure = new Zshape(color, posX, 32);
                 break;
             default:
-                newFigure = new Jshape(color, posX, 10);
+                newFigure = new Jshape(color, posX, 32);
                 break;
         }
         return newFigure;
@@ -160,11 +147,10 @@ public class Prueba{
         return newColor;
     }
     public static int getRandomX(){
-        // random number from 100 to 400, only multiples of 20
+        // random number from 96 to 416, only multiples of 32
         Random random = new Random();
-        int posX = random.nextInt(16);
-        posX *= 20;
-        posX += 100;
+        int posX = random.nextInt(13);
+        posX *= 32;
         return posX;
     }
 }
