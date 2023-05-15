@@ -99,8 +99,8 @@ public class Prueba{
         frame.setVisible(true);
     }
 
-    public static Figure generateFigure(){ //Does nothing yet, on progress to be implemented. The idea is to generate a random figure.
-        Random random = new Random(); // that will be added to an array of figures. Then, the figure will be drawn on the gamePanel.
+    public static Figure generateFigure(){
+        Random random = new Random();
         int figure = random.nextInt(6);
         String color = getRandomColor();
         int posX = getRandomX();
