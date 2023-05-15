@@ -160,8 +160,11 @@ public class Prueba{
         return newColor;
     }
     public static int getRandomX(){
-        // random number from 100 to 400
+        // random number from 100 to 400, only multiples of 20
         Random random = new Random();
-        return random.nextInt(300) + 100;
+        int posX = random.nextInt(16);
+        posX *= 20;
+        posX += 100;
+        return posX;
     }
 }
