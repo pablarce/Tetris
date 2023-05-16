@@ -7,14 +7,14 @@ import java.util.Random;
 import main.Shapes.*;
 
 public class Prueba{
-    private JPanel figurePanel;
-    private int gamePanelWidth = 320; // We could get this from gamePanel, but if we do that we get a not accurate value
-    private int gamePanelHeight = 640; // and the program doesn't work if you call gamePanel.getHeight() / gamePanel.getWidth()
+    private final JPanel figurePanel;
+    private final int gamePanelWidth = 320; // We could get this from gamePanel, but if we do that we get a not accurate value
+    private final int gamePanelHeight = 640; // and the program doesn't work if you call gamePanel.getHeight() / gamePanel.getWidth()
     private int pixelX;
     private int pixelY;
-    private int pixelWidth = 32;
-    private int pixelHeight = 32;
-    private int bottomLimit = gamePanelHeight;
+    private final int pixelWidth = 32;
+    private final int pixelHeight = 32;
+    private final int bottomLimit = gamePanelHeight;
 
     public Prueba() {
         Figure figure = generateFigure();
