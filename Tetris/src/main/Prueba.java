@@ -24,6 +24,7 @@ public class Prueba{
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
         JPanel gamePanel = MyGamePanel.getGamePanel();
+        gamePanel.setSize(gamePanelWidth, gamePanelHeight);
         gamePanel.setLayout(null);
         frame.add(gamePanel);
 
@@ -38,7 +39,7 @@ public class Prueba{
             }
         };
         figurePanel.setOpaque(false);
-        figurePanel.setBounds(0, 0, gamePanelWidth, gamePanelHeight);
+        figurePanel.setBounds(0, 0, gamePanel.getWidth(), gamePanel.getHeight());
         gamePanel.add(figurePanel);
 
         gamePanel.addKeyListener(new KeyListener() {
