@@ -2,22 +2,22 @@
 'https://plantuml.com/class-diagram
 
 abstract class Figure
-class FigureO
-class FigureI
-class FigureS
-class FigureZ
-class FigureT
-class FigureL
-class FigureJ
+class Oshape
+class Ishape
+class Sshape
+class Zshape
+class Tshape
+class Lshape
+class Jshape
 class Background
 
-Figure <|-- FigureI
-Figure <|-- FigureO
-Figure <|-- FigureS
-Figure <|-- FigureZ
-Figure <|-- FigureT
-Figure <|-- FigureL
-Figure <|-- FigureJ
+Figure <|-- Ishape
+Figure <|-- Oshape
+Figure <|-- Sshape
+Figure <|-- Zshape
+Figure <|-- Tshape
+Figure <|-- Lshape
+Figure <|-- Jshape
 
 Background <|-- Figure
 

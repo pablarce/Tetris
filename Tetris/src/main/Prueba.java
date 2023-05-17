@@ -95,13 +95,13 @@ public class Prueba{
         Figure newFigure;
         switch(figure){
             case 1:
-                newFigure = new Square(color, posX, 32);
+                newFigure = new Oshape(color, posX, 32);
                 break;
             case 2:
                 newFigure = new Tshape(color, posX, 32);
                 break;
             case 3:
-                newFigure = new Straigth(color, posX, 32);
+                newFigure = new Ishape(color, posX, 32);
                 break;
             case 4:
                 newFigure = new Lshape(color, posX, 32);
