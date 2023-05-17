@@ -26,8 +26,14 @@ public abstract class Figure {
     public int getPosX(){
         return posX;
     }
+    public int setPosX(int posX){
+        return this.posX = posX;
+    }
     public int getPosY(){
         return posY;
+    }
+    public int setPosY(int posY){
+        return this.posY = posY;
     }
     public Color getColor(){
         switch(color) {

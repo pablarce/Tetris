@@ -6,17 +6,14 @@ import java.awt.event.*;
 import java.util.Random;
 import main.Shapes.*;
 
+
 public class Prueba{
     private final JPanel figurePanel;
-    private int pixelX;
-    private int pixelY;
     private final int pixelWidth = 32;
     private final int pixelHeight = 32;
 
     public Prueba() {
-        Figure figure = generateFigure();
-        pixelX = figure.getPosX();
-        pixelY = figure.getPosY();
+        Figure actualFigure = generateFigure();
         InitialFrame MyInitialFrame = new InitialFrame();
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
@@ -29,10 +26,10 @@ public class Prueba{
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.setColor(figure.getColor());
-                g.fillRect(pixelX, pixelY, pixelWidth, pixelHeight);
+                g.setColor(actualFigure.getColor());
+                g.fillRect(actualFigure.getPosX(), actualFigure.getPosY(), pixelWidth, pixelHeight);
                 g.setColor(Color.BLACK);
-                g.drawRect(pixelX, pixelY, pixelWidth, pixelHeight);
+                g.drawRect(actualFigure.getPosX(), actualFigure.getPosY(), pixelWidth, pixelHeight);
             }
         };
         figurePanel.setOpaque(false);
@@ -49,16 +46,16 @@ public class Prueba{
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-                    if (pixelY + pixelHeight < bottomLimit) {
-                        pixelY += 32;
+                    if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
+                        actualFigure.setPosY(actualFigure.getPosY() + 32);
                     }
                 } else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-                    if (pixelX > 0) {
-                        pixelX -= 32;
+                    if (actualFigure.getPosX() > 0) {
+                        actualFigure.setPosX(actualFigure.getPosX() - 32);
                     }
                 } else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-                    if (pixelX + pixelWidth < rightLimit) {
-                        pixelX += 32;
+                    if (actualFigure.getPosX() + pixelWidth < rightLimit) {
+                        actualFigure.setPosX(actualFigure.getPosX() + 32);
                     }
                 }
                 figurePanel.repaint();
@@ -71,8 +68,8 @@ public class Prueba{
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (pixelY + pixelHeight < bottomLimit) {
-                    pixelY += 32;
+                if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
+                    actualFigure.setPosY(actualFigure.getPosY() + 32);
                 }
                 gamePanel.repaint();
             }
@@ -91,11 +88,11 @@ public class Prueba{
     //// This method is used to generate a random figure
     public static Figure generateFigure(){
         Random random = new Random();
-        int figure = random.nextInt(7);
+        int shape = random.nextInt(7);
         String color = getRandomColor();
         int posX = getRandomX();
         Figure newFigure;
-        switch(figure){
+        switch(shape){
             case 1:
                 newFigure = new Square(color, posX, 32);
                 break;
