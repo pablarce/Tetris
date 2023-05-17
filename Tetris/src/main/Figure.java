@@ -1,5 +1,6 @@
 package main;
 
+import javax.swing.*;
 import java.awt.*;
 
 public abstract class Figure {
@@ -7,6 +8,7 @@ public abstract class Figure {
     private int [][] definition = new int [4][4];
     private int posX;
     private int posY;
+    private boolean isSet = false;
 
     public Figure(String color, int posX, int posY) {
         this.color = color;
@@ -50,6 +52,12 @@ public abstract class Figure {
     }
     public void changeDefinition(int [][] newDefinition){
         this.definition = newDefinition;
+    }
+    public boolean isItSet(){
+        return isSet;
+    }
+    public void setIt(){
+        isSet = true;
     }
 
 
