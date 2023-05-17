@@ -1,7 +1,25 @@
 @startuml
-class Figure {
-    - int [][] definition= new int [4][4]
-}
+'https://plantuml.com/class-diagram
+
+abstract class Figure
+class FigureO
+class FigureI
+class FigureS
+class FigureZ
+class FigureT
+class FigureL
+class FigureJ
+class Background
+
+Figure <|-- FigureI
+Figure <|-- FigureO
+Figure <|-- FigureS
+Figure <|-- FigureZ
+Figure <|-- FigureT
+Figure <|-- FigureL
+Figure <|-- FigureJ
+
+Background <|-- Figure
 
 
 @enduml
