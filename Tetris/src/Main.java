@@ -4,6 +4,7 @@ import main.Shapes.*;
 
 public class Main {
     public static void main(String[] args) {
+
         Figure figure1, figure2, figure3, figure4, figure5, figure6, figure7;
 
         figure1 = new Square("red", 0, 10);
