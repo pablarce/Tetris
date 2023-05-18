@@ -20,6 +20,7 @@ public class Prueba{
         JPanel gamePanel = MyGamePanel.getGamePanel();
         final int bottomLimit = gamePanel.getHeight();
         final int rightLimit = gamePanel.getWidth();
+        final boolean[] isStopped = {false};
         frame.add(gamePanel);
 
         figurePanel = new JPanel() {
@@ -65,7 +66,7 @@ public class Prueba{
             public void keyReleased(KeyEvent e) {}
         });
 
-        Timer timer = new Timer(1000, new ActionListener() {
+        Timer goingDownTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
@@ -74,7 +75,16 @@ public class Prueba{
                 gamePanel.repaint();
             }
         });
-        timer.start();
+        goingDownTimer.start();
+        Timer collisionTimer = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (actualFigure.getPosY() + pixelHeight == bottomLimit) {
+                    isStopped[0] = true;
+                    goingDownTimer.stop();
+                }
+            }
+        });
 
         gamePanel.setFocusable(true);
         gamePanel.requestFocusInWindow();
