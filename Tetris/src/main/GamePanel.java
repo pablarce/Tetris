@@ -7,12 +7,14 @@ public class GamePanel {
     private int[][] panelStatus = new int[20][10];
     private int gamePanelWidth = 320;
     private int gamePanelHeight = 640;
-    private Color backgroundColor = new Color(240, 240, 240);
-    private Color gridColor = new Color(200, 200, 200);
-    private Color blockColor = new Color(100, 100, 100);
+
     private JPanel gamePanel = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {
+            Color backgroundColor = new Color(240, 240, 240);
+            Color gridColor = new Color(200, 200, 200);
+            Color blockColor = new Color(100, 100, 100);
+
             super.paintComponent(g);
             g.setColor(backgroundColor);
             g.fillRect(0, 0, gamePanelWidth, gamePanelHeight);
@@ -33,6 +35,12 @@ public class GamePanel {
             }
         }
     };
+    public GamePanel() {
+        gamePanel.setSize(gamePanelWidth, gamePanelHeight);
+        gamePanel.setLayout(null);
+        gamePanel.setFocusable(true);
+        gamePanel.requestFocusInWindow();
+    }
 
     public JPanel getGamePanel() {
         return gamePanel;

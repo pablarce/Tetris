@@ -4,6 +4,12 @@
 abstract class Figure
 class FigureO
 class FigureI
+
+
+
+
+
+
 class FigureS
 class FigureZ
 class FigureT
@@ -19,7 +25,7 @@ Figure <|-- FigureT
 Figure <|-- FigureL
 Figure <|-- FigureJ
 
-Background *-- Figure
+Background <|-- Figure
 
 
 @enduml
