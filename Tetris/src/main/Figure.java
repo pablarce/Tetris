@@ -2,13 +2,14 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Figure {
     private String color;
     private int [][] definition = new int [4][4];
+    private ArrayList<Pixel> pixels = new ArrayList<>();
     private int posX;
     private int posY;
-    private boolean isSet = false;
 
     public Figure(String color, int posX, int posY) {
         this.color = color;
@@ -56,14 +57,20 @@ public abstract class Figure {
         }
 
     }
+    public void asignPixels(int posX, int posY){
+        for (int i = 0; i < definition.length; i++) {
+            for (int j = 0; j < definition[i].length; j++) {
+                if (definition[i][j] == 1){
+                    pixels.add(new Pixel(posX + j*32, posY + i*32, getColor()));
+                }
+            }
+        }
+    }
+    public ArrayList<Pixel> getPixels(){
+        return pixels;
+    }
     public void changeDefinition(int [][] newDefinition){
         this.definition = newDefinition;
-    }
-    public boolean isItSet(){
-        return isSet;
-    }
-    public void setIt(){
-        isSet = true;
     }
 
 

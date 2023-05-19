@@ -13,8 +13,7 @@ public class Pixel {
         this.posX = posX;
         this.posY = posY;
         this.color = color;
-    }
-    public JPanel getPixel() {
+
         pixel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -27,6 +26,8 @@ public class Pixel {
         };
         pixel.setOpaque(false);
         pixel.setBounds(0, 0, 320, 640);
+    }
+    public JPanel getPixel() {
         return pixel;
     }
 }
