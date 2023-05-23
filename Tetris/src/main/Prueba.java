@@ -17,71 +17,29 @@ public class Prueba{
         InitialFrame MyInitialFrame = new InitialFrame();
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
-        JPanel gamePanel = MyGamePanel.getGamePanel();
-        final int bottomLimit = gamePanel.getHeight();
-        final int rightLimit = gamePanel.getWidth();
         final boolean[] isStopped = {false};
-        frame.add(gamePanel);
+        frame.add(MyGamePanel.getGamePanel());
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
-        actualFigure.asignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+        actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+
         for (Pixel pixel : actualFigure.getPixels()) {
-            gamePanel.add(pixel.getPixel());
+            MyGamePanel.getGamePanel().add(pixel.getPixel());
         }
-
-
-        //// This is the code that moves the figure
-        /*gamePanel.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int key = e.getKeyCode();
-                if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-                    if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
-                        actualFigure.setPosY(actualFigure.getPosY() + 32);
-                    }
-                } else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-                    if (actualFigure.getPosX() > 0) {
-                        actualFigure.setPosX(actualFigure.getPosX() - 32);
-                    }
-                } else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-                    if (actualFigure.getPosX() + pixelWidth < rightLimit) {
-                        actualFigure.setPosX(actualFigure.getPosX() + 32);
-                    }
-                }
-                figurePanel.repaint();
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
 
         Timer goingDownTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
-                    actualFigure.setPosY(actualFigure.getPosY() + 32);
+                if (actualFigure.canIMoveY(MyGamePanel.getPanelStatus())) {
+                    actualFigure.setPosY(actualFigure.getPosY() + 30);
+                    actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                    MyGamePanel.getGamePanel().repaint();
                 }
-                gamePanel.repaint();
             }
         });
         goingDownTimer.start();
-        Timer collisionTimer = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (actualFigure.getPosY() + pixelHeight == bottomLimit) {
-                    isStopped[0] = true;
-                    goingDownTimer.stop();
-                }
-            }
-        });*/
 
-        gamePanel.setFocusable(true);
-        gamePanel.requestFocusInWindow();
-
-        frame.setVisible(true);
+        //
 
     }
 
@@ -151,7 +109,7 @@ public class Prueba{
     public static int getRandomX(){
         // random number from 30 to 210, 30 as step
         Random random = new Random();
-        int posX = random.nextInt(7);
+        int posX = random.nextInt(8);
         return posX*30;
     }
 }

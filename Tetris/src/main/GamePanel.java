@@ -21,6 +21,7 @@ public class GamePanel {
             super.paintComponent(g);
             g.setColor(backgroundColor);
             g.fillRect(0, 0, gamePanelWidth, gamePanelHeight);
+            g.setColor(gridColor);
 
             // Dibujar los bordes y los bloques internos
             for (int row = 0; row < panelStatus.length; row++) {
@@ -34,7 +35,7 @@ public class GamePanel {
                         g.setColor(borderColor);
                         g.fillRect(x, y, cellWidth, cellHeight);
                         g.setColor(Color.BLACK);
-                        g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);
+                        g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);                 
                     } else if (panelStatus[row][col] == 2) {
                         g.setColor(Color.RED);
                         g.fillRect(x, y, cellWidth, cellHeight);
@@ -73,3 +74,4 @@ public class GamePanel {
         return panelStatus;
     }
 }
+
