@@ -66,7 +66,7 @@ public class Prueba{
                 }
                 gamePanel.repaint();
             }
-        });
+        })
         goingDownTimer.start();
         Timer collisionTimer = new Timer(200, new ActionListener() {
             @Override
