@@ -73,6 +73,7 @@ public abstract class Figure {
                 if (definition[i][j] == 1){
                     pixels.get(cont).setPosX(posX + j*30);
                     pixels.get(cont).setPosY(posY + i*30);
+                    pixels.get(cont).getPixel().repaint();
                     cont ++;
                 }
             }

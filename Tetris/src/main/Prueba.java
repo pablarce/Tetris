@@ -22,6 +22,7 @@ public class Prueba{
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
         actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+
         for (Pixel pixel : actualFigure.getPixels()) {
             MyGamePanel.getGamePanel().add(pixel.getPixel());
         }
@@ -32,11 +33,14 @@ public class Prueba{
                 if (actualFigure.canIMoveY(MyGamePanel.getPanelStatus())) {
                     actualFigure.setPosY(actualFigure.getPosY() + 30);
                     actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                    MyGamePanel.getGamePanel().repaint();
                 }
-                MyGamePanel.getGamePanel().repaint();
             }
         });
         goingDownTimer.start();
+
+        //
+
     }
 
 

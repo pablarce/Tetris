@@ -19,9 +19,9 @@ public class Pixel {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(color);
-                g.fillRect(posX, posY, 30, 30);
+                g.fillRect(getPosX(), getPosY(), 30, 30);
                 g.setColor(Color.BLACK);
-                g.drawRect(posX, posY, 30, 30);
+                g.drawRect(getPosX(), getPosY(), 30, 30);
             }
         };
         pixel.setOpaque(false);
