@@ -17,16 +17,15 @@ public class Prueba{
         InitialFrame MyInitialFrame = new InitialFrame();
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
-        JPanel gamePanel = MyGamePanel.getGamePanel();
-        final int bottomLimit = gamePanel.getHeight();
-        final int rightLimit = gamePanel.getWidth();
+        final int bottomLimit = MyGamePanel.getGamePanel().getHeight();
+        final int rightLimit = MyGamePanel.getGamePanel().getWidth();
         final boolean[] isStopped = {false};
-        frame.add(gamePanel);
+        frame.add(MyGamePanel.getGamePanel());
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
         actualFigure.asignPixels(actualFigure.getPosX(), actualFigure.getPosY());
         for (Pixel pixel : actualFigure.getPixels()) {
-            gamePanel.add(pixel.getPixel());
+            MyGamePanel.getGamePanel().add(pixel.getPixel());
         }
 
 
@@ -78,8 +77,8 @@ public class Prueba{
             }
         });*/
 
-        gamePanel.setFocusable(true);
-        gamePanel.requestFocusInWindow();
+        MyGamePanel.getGamePanel().setFocusable(true);
+        MyGamePanel.getGamePanel().requestFocusInWindow();
 
         frame.setVisible(true);
 
@@ -151,7 +150,7 @@ public class Prueba{
     public static int getRandomX(){
         // random number from 30 to 210, 30 as step
         Random random = new Random();
-        int posX = random.nextInt(7);
+        int posX = random.nextInt(8);
         return posX*30;
     }
 }
