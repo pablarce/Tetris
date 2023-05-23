@@ -61,7 +61,7 @@ public abstract class Figure {
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
                 if (definition[i][j] == 1){
-                    pixels.add(new Pixel(posX + j*32, posY + i*32, getColor()));
+                    pixels.add(new Pixel(posX + j*30, posY + i*30, getColor()));
                 }
             }
         }
@@ -73,5 +73,28 @@ public abstract class Figure {
         this.definition = newDefinition;
     }
 
-
+    public boolean canIMoveY(int [][] board){
+        for (int i = 0; i < definition.length; i++) {
+            for (int j = 0; j < definition[i].length; j++) {
+                if (definition[i][j] == 1){
+                    if (board[(posY + i + 1)/30][(posX + j)/30] == 1){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    public boolean canIMoveX(int [][] board, int direction){
+        for (int i = 0; i < definition.length; i++) {
+            for (int j = 0; j < definition[i].length; j++) {
+                if (definition[i][j] == 1){
+                    if (board[(posY + i)/30][(posX + j + direction)/30] == 1){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }
