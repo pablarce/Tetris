@@ -17,71 +17,26 @@ public class Prueba{
         InitialFrame MyInitialFrame = new InitialFrame();
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
-        final int bottomLimit = MyGamePanel.getGamePanel().getHeight();
-        final int rightLimit = MyGamePanel.getGamePanel().getWidth();
         final boolean[] isStopped = {false};
         frame.add(MyGamePanel.getGamePanel());
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
-        actualFigure.asignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+        actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
         for (Pixel pixel : actualFigure.getPixels()) {
             MyGamePanel.getGamePanel().add(pixel.getPixel());
         }
 
-
-        //// This is the code that moves the figure
-        /*gamePanel.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int key = e.getKeyCode();
-                if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-                    if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
-                        actualFigure.setPosY(actualFigure.getPosY() + 32);
-                    }
-                } else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-                    if (actualFigure.getPosX() > 0) {
-                        actualFigure.setPosX(actualFigure.getPosX() - 32);
-                    }
-                } else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-                    if (actualFigure.getPosX() + pixelWidth < rightLimit) {
-                        actualFigure.setPosX(actualFigure.getPosX() + 32);
-                    }
-                }
-                figurePanel.repaint();
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-
         Timer goingDownTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (actualFigure.getPosY() + pixelHeight < bottomLimit) {
-                    actualFigure.setPosY(actualFigure.getPosY() + 32);
+                if (actualFigure.canIMoveY(MyGamePanel.getPanelStatus())) {
+                    actualFigure.setPosY(actualFigure.getPosY() + 30);
+                    actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
                 }
-                gamePanel.repaint();
+                MyGamePanel.getGamePanel().repaint();
             }
         });
         goingDownTimer.start();
-        Timer collisionTimer = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (actualFigure.getPosY() + pixelHeight == bottomLimit) {
-                    isStopped[0] = true;
-                    goingDownTimer.stop();
-                }
-            }
-        });*/
-
-        MyGamePanel.getGamePanel().setFocusable(true);
-        MyGamePanel.getGamePanel().requestFocusInWindow();
-
-        frame.setVisible(true);
-
     }
 
 

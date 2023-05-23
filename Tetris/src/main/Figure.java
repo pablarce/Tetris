@@ -57,11 +57,23 @@ public abstract class Figure {
         }
 
     }
-    public void asignPixels(int posX, int posY){
+    public void assignPixels(int posX, int posY){
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
                 if (definition[i][j] == 1){
                     pixels.add(new Pixel(posX + j*30, posY + i*30, getColor()));
+                }
+            }
+        }
+    }
+    public void reAssignPixels(int posX, int posY){
+        int cont = 0;
+        for (int i = 0; i < definition.length; i++) {
+            for (int j = 0; j < definition[i].length; j++) {
+                if (definition[i][j] == 1){
+                    pixels.get(cont).setPosX(posX + j*30);
+                    pixels.get(cont).setPosY(posY + i*30);
+                    cont ++;
                 }
             }
         }
