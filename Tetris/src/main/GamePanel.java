@@ -34,6 +34,8 @@ public class GamePanel {
                     if (panelStatus[row][col] == 1) {
                         g.setColor(borderColor);
                         g.fillRect(x, y, cellWidth, cellHeight);
+                        g.setColor(Color.BLACK);
+                        g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);                 
                     } else if (panelStatus[row][col] == 2) {
                         g.setColor(Color.RED);
                         g.fillRect(x, y, cellWidth, cellHeight);
@@ -71,4 +73,5 @@ public class GamePanel {
     public int[][] getPanelStatus() {
         return panelStatus;
     }
+}
 }

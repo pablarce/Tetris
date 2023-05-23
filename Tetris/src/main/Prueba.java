@@ -149,9 +149,9 @@ public class Prueba{
         return newColor;
     }
     public static int getRandomX(){
-        // random number from 0 to 240, 30 as step
+        // random number from 30 to 210, 30 as step
         Random random = new Random();
-        int posX = random.nextInt(9);
+        int posX = random.nextInt(7);
         return posX*30;
     }
 }
