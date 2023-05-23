@@ -19,13 +19,13 @@ public class Pixel {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(color);
-                g.fillRect(posX, posY, 32, 32);
+                g.fillRect(posX, posY, 30, 30);
                 g.setColor(Color.BLACK);
-                g.drawRect(posX, posY, 32, 32);
+                g.drawRect(posX, posY, 30, 30);
             }
         };
         pixel.setOpaque(false);
-        pixel.setBounds(0, 0, 320, 640);
+        pixel.setBounds(0, 0, 360, 660);
     }
     public JPanel getPixel() {
         return pixel;

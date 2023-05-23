@@ -9,8 +9,8 @@ import main.Shapes.*;
 
 
 public class Prueba{
-    private final int pixelWidth = 32;
-    private final int pixelHeight = 32;
+    private final int pixelWidth = 30;
+    private final int pixelHeight = 30;
 
     public Prueba() {
         Figure actualFigure = generateFigure();
@@ -149,9 +149,9 @@ public class Prueba{
         return newColor;
     }
     public static int getRandomX(){
-        // random number from 0 to 192, with 32 as step
+        // random number from 30 to 210, 30 as step
         Random random = new Random();
-        int posX = random.nextInt(7) * 32;
-        return posX;
+        int posX = random.nextInt(7);
+        return posX*30;
     }
 }
