@@ -49,7 +49,7 @@ public abstract class Figure {
             case "orange":
                 return Color.ORANGE;
             case "purple":
-                return new Color(0x800080);
+                return Color.MAGENTA;
             case "pink":
                 return Color.PINK;
             default:
@@ -57,11 +57,24 @@ public abstract class Figure {
         }
 
     }
-    public void asignPixels(int posX, int posY){
+    public void assignPixels(int posX, int posY){
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
                 if (definition[i][j] == 1){
                     pixels.add(new Pixel(posX + j*30, posY + i*30, getColor()));
+                }
+            }
+        }
+    }
+    public void reAssignPixels(int posX, int posY){
+        int cont = 0;
+        for (int i = 0; i < definition.length; i++) {
+            for (int j = 0; j < definition[i].length; j++) {
+                if (definition[i][j] == 1){
+                    pixels.get(cont).setPosX(posX + j*30);
+                    pixels.get(cont).etPosY(posY + i*30);
+                    pixels.get(cont).getPixel().repaint();
+                    cont ++;
                 }
             }
         }
@@ -72,12 +85,21 @@ public abstract class Figure {
     public void changeDefinition(int [][] newDefinition){
         this.definition = newDefinition;
     }
+    public void rotate(){
+        int [][] newDefinition = new int [4][4];
+        for (int i = 0; i < definition.length; i++) {
+            for (int j = 0; j < definition[i].length; j++) {
+                newDefinition[i][j] = definition[definition.length - 1 - j][i];
+            }
+        }
+        changeDefinition(newDefinition);
+    }
 
     public boolean canIMoveY(int [][] board){
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
                 if (definition[i][j] == 1){
-                    if (board[(posY + i + 1)/30][(posX + j)/30] == 1){
+                    if (board[posY/30 + i + 1][posX/30 + j] != 0){
                         return false;
                     }
                 }
@@ -89,7 +111,7 @@ public abstract class Figure {
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
                 if (definition[i][j] == 1){
-                    if (board[(posY + i)/30][(posX + j + direction)/30] == 1){
+                    if (board[posY/30 + i][posX/30 + j + direction] != 0){
                         return false;
                     }
                 }
