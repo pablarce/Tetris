@@ -3,13 +3,17 @@ package main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Random;
+import java.util.Stack;
+
 import main.Shapes.*;
 
 
 public class Prueba{
 
     public Prueba() {
+        Stack<Figure> figures = new Stack<>();
         Figure actualFigure = generateFigure();
+        figures.push(actualFigure);
         InitialFrame MyInitialFrame = new InitialFrame();
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
@@ -26,14 +30,24 @@ public class Prueba{
         Timer goingDownTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (actualFigure.canIMoveY(MyGamePanel.getPanelStatus())) {
-                    actualFigure.setPosY(actualFigure.getPosY() + 30);
-                    actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                if (figures.peek().canIMoveY(MyGamePanel.getPanelStatus())) {
+                    figures.peek().setPosY(figures.peek().getPosY() + 30);
+                    figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                     MyGamePanel.getGamePanel().repaint();
                 }
             }
         });
         goingDownTimer.start();
+
+        Timer checkIfStopped = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!figures.peek().canIMoveY(MyGamePanel.getPanelStatus())) {
+                    newFigure(MyGamePanel, figures);
+                }
+            }
+        });
+        checkIfStopped.start();
 
         // add the keyboard movement
         frame.addKeyListener(new KeyAdapter() {
@@ -41,30 +55,30 @@ public class Prueba{
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
-                    if (actualFigure.canIMoveY(MyGamePanel.getPanelStatus())){
-                        actualFigure.setPosY(actualFigure.getPosY() + 30);
-                        actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                    if (figures.peek().canIMoveY(MyGamePanel.getPanelStatus())){
+                        figures.peek().setPosY(figures.peek().getPosY() + 30);
+                        figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
-                    if (actualFigure.canIMoveX(MyGamePanel.getPanelStatus(), -1)){
-                        actualFigure.setPosX(actualFigure.getPosX() - 30);
-                        actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                    if (figures.peek().canIMoveX(MyGamePanel.getPanelStatus(), -1)){
+                        figures.peek().setPosX(figures.peek().getPosX() - 30);
+                        figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D ) {
-                    if (actualFigure.canIMoveX(MyGamePanel.getPanelStatus(), 1)){
-                        actualFigure.setPosX(actualFigure.getPosX() + 30);
-                        actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                    if (figures.peek().canIMoveX(MyGamePanel.getPanelStatus(), 1)){
+                        figures.peek().setPosX(figures.peek().getPosX() + 30);
+                        figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
                     if (!wKeyPressed) {
-                        actualFigure.rotate();
-                        actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                        figures.peek().rotate();
+                        figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
                         wKeyPressed = true;
                     }
@@ -85,6 +99,7 @@ public class Prueba{
                 }
             }
         });
+
     }
 
 
@@ -156,4 +171,20 @@ public class Prueba{
         int posX = random.nextInt(7);
         return posX*30 + 30;
     }
+
+    public static void newFigure(GamePanel MyGamePanel, Stack<Figure> figures){
+        Figure newFigure = generateFigure();
+        for (Pixel pixel : figures.peek().getPixels()) {
+            MyGamePanel.paintPanel(pixel.getPosX()/30, pixel.getPosY()/30, pixel.getColor());
+            MyGamePanel.getGamePanel().remove(pixel.getPixel());
+        }
+        figures.push(newFigure);
+        figures.peek().assignPixels(figures.peek().getPosX(), figures.peek().getPosY());
+
+        for (Pixel pixel : figures.peek().getPixels()) {
+            MyGamePanel.getGamePanel().add(pixel.getPixel());
+        }
+        MyGamePanel.getGamePanel().repaint();
+    }
+
 }

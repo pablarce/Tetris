@@ -39,6 +39,9 @@ public class Pixel {
     public int getPosY(){
         return posY;
     }
+    public Color getColor(){
+        return color;
+    }
     public JPanel getPixel() {
         return pixel;
     }

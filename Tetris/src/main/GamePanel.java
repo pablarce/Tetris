@@ -73,5 +73,13 @@ public class GamePanel {
     public int[][] getPanelStatus() {
         return panelStatus;
     }
+
+    public void paintPanel(int x, int y, Color color) {
+        if (color == Color.RED) {
+            panelStatus[y][x] = 2;
+        } else {
+            panelStatus[y][x] = 1;
+        }
+    }
 }
 
