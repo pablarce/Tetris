@@ -37,6 +37,7 @@ public class Prueba{
 
         // add the keyboard movement
         frame.addKeyListener(new KeyAdapter() {
+            private boolean wKeyPressed = false;
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
@@ -60,11 +61,14 @@ public class Prueba{
                         MyGamePanel.getGamePanel().repaint();
                     }
                 }
-                if (e.getKeyCode() == KeyEvent.VK_W){
-                    if (actualFigure.canIRotate(MyGamePanel.getPanelStatus())){
-                        actualFigure.rotate();
-                        actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
-                        MyGamePanel.getGamePanel().repaint();
+                if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
+                    if (!wKeyPressed) {
+                        if (actualFigure.canIRotate(MyGamePanel.getPanelStatus())) {
+                            actualFigure.rotate();
+                            actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                            MyGamePanel.getGamePanel().repaint();
+                        }
+                        wKeyPressed = true;
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -75,6 +79,11 @@ public class Prueba{
                         goingDownTimer.stop();
                         isStopped[0] = true;
                     }
+                }
+            }
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
+                    wKeyPressed = false;
                 }
             }
         });
@@ -146,7 +155,7 @@ public class Prueba{
     public static int getRandomX(){
         // random number from 30 to 210, 30 as step
         Random random = new Random();
-        int posX = random.nextInt(8);
-        return posX*30;
+        int posX = random.nextInt(7);
+        return posX*30 + 30;
     }
 }
