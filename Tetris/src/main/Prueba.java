@@ -63,11 +63,9 @@ public class Prueba{
                 }
                 if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
                     if (!wKeyPressed) {
-                        if (actualFigure.canIRotate(MyGamePanel.getPanelStatus())) {
-                            actualFigure.rotate();
-                            actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
-                            MyGamePanel.getGamePanel().repaint();
-                        }
+                        actualFigure.rotate();
+                        actualFigure.reAssignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+                        MyGamePanel.getGamePanel().repaint();
                         wKeyPressed = true;
                     }
                 }

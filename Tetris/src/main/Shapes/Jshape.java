@@ -7,10 +7,10 @@ public class Jshape extends Figure {
 
     public Jshape(String color, int posX, int posY) {
         super(color, posX, posY);
-        newDefinition[1][1] = 1;
-        newDefinition[2][1] = 1;
+        newDefinition[1][2] = 1;
         newDefinition[2][2] = 1;
-        newDefinition[2][3] = 1;
+        newDefinition[3][2] = 1;
+        newDefinition[3][1] = 1;
         changeDefinition(newDefinition);
     }
 }

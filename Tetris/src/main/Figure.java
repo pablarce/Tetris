@@ -119,22 +119,4 @@ public abstract class Figure {
         }
         return true;
     }
-    public boolean canIRotate(int [][] board){
-        int [][] newDefinition = new int [4][4];
-        for (int i = 0; i < definition.length; i++) {
-            for (int j = 0; j < definition[i].length; j++) {
-                newDefinition[i][j] = definition[definition.length - 1 - j][i];
-            }
-        }
-        for (int i = 0; i < newDefinition.length; i++) {
-            for (int j = 0; j < newDefinition[i].length; j++) {
-                if (newDefinition[i][j] == 1){
-                    if (board[posY/30 + i][posX/30 + j] != 0){
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
 }
