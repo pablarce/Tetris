@@ -31,16 +31,25 @@ public class GamePanel {
                     g.setColor(gridColor);
                     g.drawRect(x, y, cellWidth, cellHeight);
 
-                    if (panelStatus[row][col] == 1) {
-                        g.setColor(borderColor);
+                    if (panelStatus[row][col] == 1) {g.setColor(borderColor);}
+                    else if (panelStatus[row][col] == 2) {g.setColor(Color.RED);}
+                    else if (panelStatus[row][col] == 3) {g.setColor(Color.BLUE);}
+                    else if (panelStatus[row][col] == 3) {g.setColor(Color.BLUE);}
+                    else if (panelStatus[row][col] == 4) {g.setColor(Color.GREEN);}
+                    else if (panelStatus[row][col] == 5) {g.setColor(Color.YELLOW);}
+                    else if (panelStatus[row][col] == 6) {g.setColor(Color.ORANGE);}
+                    else if (panelStatus[row][col] == 7) {g.setColor(Color.MAGENTA);}
+                    else if (panelStatus[row][col] == 8) {g.setColor(Color.PINK);}
+
+                    if (panelStatus[row][col] == 1){
                         g.fillRect(x, y, cellWidth, cellHeight);
                         g.setColor(Color.BLACK);
-                        g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);                 
-                    } else if (panelStatus[row][col] == 2) {
-                        g.setColor(Color.RED);
+                        g.drawRect(0, 0, gamePanelWidth, gamePanelHeight);
+                    }
+                    else if (panelStatus[row][col] != 0 && panelStatus[row][col] != 1){
                         g.fillRect(x, y, cellWidth, cellHeight);
                         g.setColor(Color.BLACK);
-                        g.drawRect(x, y, cellWidth, cellHeight);
+                        g.drawRect(x, y, gamePanelWidth, gamePanelHeight);
                     }
                 }
             }
@@ -57,8 +66,6 @@ public class GamePanel {
             panelStatus[0][i] = 1; // Lado superior
             panelStatus[panelStatus.length - 1][i] = 1; // Lado inferior
         }
-        panelStatus[10][7] = 2; //example
-        panelStatus[10][8] = 2; //example
 
         gamePanel.setSize(gamePanelWidth, gamePanelHeight);
         gamePanel.setLayout(null);
@@ -77,9 +84,17 @@ public class GamePanel {
     public void paintPanel(int x, int y, Color color) {
         if (color == Color.RED) {
             panelStatus[y][x] = 2;
-        } else {
-            panelStatus[y][x] = 1;
-        }
+        } else if (color == Color.BLUE){
+            panelStatus[y][x] = 3;
+        } else if (color == Color.GREEN) {
+            panelStatus[y][x] = 4;
+        } else if (color == Color.YELLOW) {
+            panelStatus[y][x] = 5;
+        } else if (color == Color.ORANGE) {
+            panelStatus[y][x] = 6;
+        } else if (color == Color.MAGENTA) {
+            panelStatus[y][x] = 7;
+        } else if (color == Color.PINK) {
+            panelStatus[y][x] = 8;}
     }
 }
-

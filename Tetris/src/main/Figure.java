@@ -49,7 +49,7 @@ public abstract class Figure {
             case "orange":
                 return Color.ORANGE;
             case "purple":
-                return new Color(0x800080);
+                return Color.MAGENTA;
             case "pink":
                 return Color.PINK;
             default:
