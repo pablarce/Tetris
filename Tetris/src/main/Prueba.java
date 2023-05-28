@@ -39,7 +39,7 @@ public class Prueba{
         });
         goingDownTimer.start();
 
-        Timer checkIfStopped = new Timer(1000, new ActionListener() {
+        Timer checkIfStopped = new Timer(1500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!figures.peek().canIMoveY(MyGamePanel.getPanelStatus())) {
@@ -48,6 +48,43 @@ public class Prueba{
             }
         });
         checkIfStopped.start();
+
+        Timer laterals = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                // X axis
+                for (int row = 1; row < MyGamePanel.getPanelStatus().length - 1; row++) {
+                    boolean full = true;
+                    for (int col = 1; col < MyGamePanel.getPanelStatus()[row].length - 1; col++) {
+                        if (MyGamePanel.getPanelStatus()[row][col] == 0) {
+                            full = false;
+                            break;
+                        }
+                    }
+                    if (full) {
+                        for (int col = 1; col < MyGamePanel.getPanelStatus()[row].length - 1; col++) {
+                            MyGamePanel.getPanelStatus()[row][col] = 0;
+                        }
+                        for (int row2 = row; row2 > 1; row2--) {
+                            for (int col = 1; col < MyGamePanel.getPanelStatus()[row2].length - 1; col++) {
+                                MyGamePanel.getPanelStatus()[row2][col] = MyGamePanel.getPanelStatus()[row2 - 1][col];
+                            }
+                        }
+                    }
+                }
+
+                // Y axis
+                for (int col = 1; col < MyGamePanel.getPanelStatus()[0].length - 1; col++) {
+                    if (MyGamePanel.getPanelStatus()[0][col] == 1) {
+                        isStopped[0] = true;
+                        break;
+                    }
+                }
+                MyGamePanel.getGamePanel().repaint();
+            }
+        });
+        laterals.start();
 
         // add the keyboard movement
         frame.addKeyListener(new KeyAdapter() {
@@ -186,5 +223,6 @@ public class Prueba{
         }
         MyGamePanel.getGamePanel().repaint();
     }
+
 
 }

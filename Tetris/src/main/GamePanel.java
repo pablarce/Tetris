@@ -96,4 +96,5 @@ public class GamePanel {
         } else if (color == Color.PINK) {
             panelStatus[y][x] = 8;}
     }
+
 }
