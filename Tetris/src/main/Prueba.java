@@ -76,7 +76,7 @@ public class Prueba{
 
                 // Y axis
                 for (int col = 1; col < MyGamePanel.getPanelStatus()[0].length - 1; col++) {
-                    if (MyGamePanel.getPanelStatus()[0][col] == 1) {
+                    if (MyGamePanel.getPanelStatus()[1][col] == 1) {
                         isStopped[0] = true;
                         break;
                     }
