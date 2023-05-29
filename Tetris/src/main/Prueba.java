@@ -1,9 +1,6 @@
 package main;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Random;
 import main.Shapes.*;
 
@@ -24,7 +21,7 @@ public class Prueba{
         frame.add(gamePanel);
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
-        actualFigure.asignPixels(actualFigure.getPosX(), actualFigure.getPosY());
+        actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
         for (Pixel pixel : actualFigure.getPixels()) {
             gamePanel.add(pixel.getPixel());
         }
@@ -96,13 +93,13 @@ public class Prueba{
         Figure newFigure;
         switch(shape){
             case 1:
-                newFigure = new Oshape(color, posX, 0);
+                newFigure = new Square(color, posX, 0);
                 break;
             case 2:
                 newFigure = new Tshape(color, posX, 0);
                 break;
             case 3:
-                newFigure = new Ishape(color, posX, 0);
+                newFigure = new Straigth(color, posX, 0);
                 break;
             case 4:
                 newFigure = new Lshape(color, posX, 0);

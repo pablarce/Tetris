@@ -2,11 +2,11 @@ package main.Shapes;
 
 import main.Figure;
 
-public class Oshape extends Figure {
+public class Square extends Figure {
 
     private int [][] newDefinition = new int [4][4];
 
-    public Oshape(String color, int posX, int posY) {
+    public Square(String color, int posX, int posY) {
         super(color, posX, posY);
         newDefinition[1][1] = 1;
         newDefinition[1][2] = 1;
