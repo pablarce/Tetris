@@ -8,9 +8,9 @@ import java.util.Stack;
 import main.Shapes.*;
 
 
-public class Prueba{
+public class Game{
 
-    public Prueba() {
+    public Game() {
         Stack<Figure> figures = new Stack<>();
         Figure actualFigure = generateFigure();
         figures.push(actualFigure);
