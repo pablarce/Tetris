@@ -72,7 +72,7 @@ public abstract class Figure {
             for (int j = 0; j < definition[i].length; j++) {
                 if (definition[i][j] == 1){
                     pixels.get(cont).setPosX(posX + j*30);
-                    pixels.get(cont).setPosX(posY + i*30);
+                    pixels.get(cont).setPosY(posY + i*30);
                     pixels.get(cont).getPixel().repaint();
                     cont ++;
                 }

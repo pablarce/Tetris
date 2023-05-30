@@ -7,10 +7,10 @@ public class Straigth extends Figure {
 
     public Straigth(String color, int posX, int posY) {
         super(color, posX, posY);
-        newDefinition[0][0] = 1;
-        newDefinition[0][1] = 1;
-        newDefinition[0][2] = 1;
-        newDefinition[0][3] = 1;
+        newDefinition[1][0] = 1;
+        newDefinition[1][1] = 1;
+        newDefinition[1][2] = 1;
+        newDefinition[1][3] = 1;
         changeDefinition(newDefinition);
     }
 }

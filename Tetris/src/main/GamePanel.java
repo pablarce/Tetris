@@ -34,7 +34,6 @@ public class GamePanel {
                     if (panelStatus[row][col] == 1) {g.setColor(borderColor);}
                     else if (panelStatus[row][col] == 2) {g.setColor(Color.RED);}
                     else if (panelStatus[row][col] == 3) {g.setColor(Color.BLUE);}
-                    else if (panelStatus[row][col] == 3) {g.setColor(Color.BLUE);}
                     else if (panelStatus[row][col] == 4) {g.setColor(Color.GREEN);}
                     else if (panelStatus[row][col] == 5) {g.setColor(Color.YELLOW);}
                     else if (panelStatus[row][col] == 6) {g.setColor(Color.ORANGE);}
@@ -49,7 +48,7 @@ public class GamePanel {
                     else if (panelStatus[row][col] != 0 && panelStatus[row][col] != 1){
                         g.fillRect(x, y, cellWidth, cellHeight);
                         g.setColor(Color.BLACK);
-                        g.drawRect(x, y, gamePanelWidth, gamePanelHeight);
+                        g.drawRect(x, y, cellWidth, cellHeight);
                     }
                 }
             }
@@ -95,7 +94,7 @@ public class GamePanel {
         } else if (color == Color.MAGENTA) {
             panelStatus[y][x] = 7;
         } else if (color == Color.PINK) {
-            panelStatus[y][x] = 8;
-        }
+            panelStatus[y][x] = 8;}
     }
+
 }
