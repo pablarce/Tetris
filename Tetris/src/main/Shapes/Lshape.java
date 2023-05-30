@@ -14,7 +14,7 @@ public class Lshape extends Figure {
         newDefinition[2][1] = 1;
         newDefinition[3][1] = 1;
         newDefinition[3][2] = 1;
-        changeDefinition(newDefinition);
+        definition=newDefinition;
         this.color = lShapeColor;
     }
 }

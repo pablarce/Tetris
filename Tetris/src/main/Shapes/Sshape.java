@@ -11,7 +11,7 @@ public class Sshape extends main.Figure{
         newDefinition[1][3] = 1;
         newDefinition[2][1] = 1;
         newDefinition[2][2] = 1;
-        changeDefinition(newDefinition);
+        definition=newDefinition;
         this.color = sShapeColor;
     }
 }

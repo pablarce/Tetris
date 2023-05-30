@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public abstract class Figure {
     protected Color color;
-    private int [][] definition = new int [4][4];
+    protected int [][] definition = new int [4][4];
     private ArrayList<Pixel> pixels = new ArrayList<>();
     private int posX;
     private int posY;
@@ -64,9 +64,7 @@ public abstract class Figure {
     public ArrayList<Pixel> getPixels(){
         return pixels;
     }
-    public void changeDefinition(int [][] newDefinition){
-        this.definition = newDefinition;
-    }
+
     public void rotate(){
         int [][] newDefinition = new int [4][4];
         for (int i = 0; i < definition.length; i++) {
@@ -74,7 +72,6 @@ public abstract class Figure {
                 newDefinition[i][j] = definition[definition.length - 1 - j][i];
             }
         }
-        changeDefinition(newDefinition);
     }
 
     public boolean canIMoveY(int [][] board){

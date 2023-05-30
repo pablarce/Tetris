@@ -13,7 +13,7 @@ public class Straigth extends Figure {
         newDefinition[1][1] = 1;
         newDefinition[1][2] = 1;
         newDefinition[1][3] = 1;
-        changeDefinition(newDefinition);
+        definition=newDefinition;
         this.color = straigthColor;
 
     }
