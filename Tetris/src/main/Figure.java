@@ -5,14 +5,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Figure {
-    private String color;
+    protected Color color;
     private int [][] definition = new int [4][4];
     private ArrayList<Pixel> pixels = new ArrayList<>();
     private int posX;
     private int posY;
 
-    public Figure(String color, int posX, int posY) {
-        this.color = color;
+    public Figure( int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
     }
@@ -37,24 +36,7 @@ public abstract class Figure {
         return this.posY = posY;
     }
     public Color getColor(){
-        switch(color) {
-            case "red":
-                return Color.RED;
-            case "blue":
-                return Color.BLUE;
-            case "green":
-                return Color.GREEN;
-            case "yellow":
-                return Color.YELLOW;
-            case "orange":
-                return Color.ORANGE;
-            case "purple":
-                return Color.MAGENTA;
-            case "pink":
-                return Color.PINK;
-            default:
-                return Color.BLACK;
-        }
+        return color;
 
     }
     public void assignPixels(int posX, int posY){
