@@ -1,3 +1,4 @@
+
 package main;
 
 import javax.swing.*;
@@ -37,7 +38,6 @@ public abstract class Figure {
     }
     public Color getColor(){
         return color;
-
     }
     public void assignPixels(int posX, int posY){
         for (int i = 0; i < definition.length; i++) {
@@ -66,12 +66,13 @@ public abstract class Figure {
     }
 
     public void rotate(){
-        int [][] newDefinition = new int [4][4];
+        int [][] rotatedDefinition = new int [4][4];
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
-                newDefinition[i][j] = definition[definition.length - 1 - j][i];
+                rotatedDefinition[i][j] = definition[definition.length - 1 - j][i];
             }
         }
+        definition = rotatedDefinition;
     }
 
     public boolean canIMoveY(int [][] board){

@@ -96,6 +96,7 @@ public class Game{
                         figures.peek().setPosY(figures.peek().getPosY() + 30);
                         figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
+
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
@@ -118,6 +119,7 @@ public class Game{
                         figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
                         wKeyPressed = true;
+
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
