@@ -1,25 +1,116 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class Figure
-class FigureO
-class FigureI
-class FigureS
-class FigureZ
-class FigureT
-class FigureL
-class FigureJ
-class Background
+abstract class Figure{
+- String color
+    - int [][] definition
+    - ArrayList<Pixel> pixels
+    - int posX
+    - int posY
++ Figure(String,int,int)
++ void draw()
++ int getPosX()
++ int setPosX(int)
++ int getPosY()
++ int setPosY(int)
++ Color getColor()
++ void assignPixels(int, int)
+ + void reAssignPixels(int, int)
+ + ArrayList<Pixel> getPixels()
+ + void changeDefinition(int [][])
++ void rotate()
++ boolean canIMoveY(int [][])
++ boolean canIMoveX(int [][],int)
 
-Figure <|-- FigureI
-Figure <|-- FigureO
-Figure <|-- FigureS
-Figure <|-- FigureZ
-Figure <|-- FigureT
-Figure <|-- FigureL
-Figure <|-- FigureJ
 
-Background *-- Figure
+
+}
+class Square{
+-int [][] newDefinition=new int[][]
++ Square(String,int,int)
+
+}
+class Straigth{
+-int [][] newDefinition=new int[][]
++ Straigth(String,int,int)
+}
+class Sshape{
+-int [][] newDefinition=new int[][]
++ Sshape(String,int,int)
+}
+class Zshape{
+-int [][] newDefinition=new int[][]
++ Zshape(String,int,int)
+
+}
+class Tshape{
+-int [][] newDefinition=new int[][]
++ Tshape(String,int,int)
+
+}
+class Lshape{
+-int [][] newDefinition=new int[][]
++ Lshape(String,int,int)
+
+
+}
+class Jshape{
+-int [][] newDefinition=new int[][]
++ Jshape(String,int,int)
+}
+class GamePanel{
+- int[][] panelStatus = new int[][]
+    - final int gamePanelWidth
+    - final int gamePanelHeight
+    - final int cellWidth
+    - final int cellHeight
+     - JPanel gamePanel
+ + GamePanel() {
++ JPanel getGamePanel()
++ int[][] getPanelStatus()
++ void paintPanel(int,int,Color)
+
+
+}
+class Pixel{
+- int posX;
+    - int posY;
+    - Color color;
+    - JPanel pixel;
+    + JPanel getPixel()
++ void setPosX(int)
+      + void setPosY(int )
+}
+class InitialFrame{
+ - JFrame frame
+ + InitialFrame()
+  + JFrame getFrame()
++ static String getRandomColor()
+ + static int getRandomX()
+}
+class Game{
+- final int pixelWidth
+    - final int pixelHeight
+    + Game()
++ static Figure generateFigure()
+
+
+}
+
+Figure <|-- Straigth
+Figure <|-- Square
+Figure <|-- Sshape
+Figure <|-- Zshape
+Figure <|-- Tshape
+Figure <|-- Lshape
+Figure <|-- Jshape
+
+Figure --* Pixel
+
+GamePanel *-- Game
+InitialFrame *-- Game
+Figure *-- Game
+
 
 
 @enduml

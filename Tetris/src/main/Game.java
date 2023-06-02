@@ -96,6 +96,7 @@ public class Game{
                         figures.peek().setPosY(figures.peek().getPosY() + 30);
                         figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
+
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
@@ -118,6 +119,7 @@ public class Game{
                         figures.peek().reAssignPixels(figures.peek().getPosX(), figures.peek().getPosY());
                         MyGamePanel.getGamePanel().repaint();
                         wKeyPressed = true;
+
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -145,62 +147,32 @@ public class Game{
     public static Figure generateFigure(){
         Random random = new Random();
         int shape = random.nextInt(7);
-        String color = getRandomColor();
         int posX = getRandomX();
         Figure newFigure;
         switch(shape){
             case 1:
-                newFigure = new Square(color, posX, 0);
+                newFigure = new Square(posX, 0);
                 break;
             case 2:
-                newFigure = new Tshape(color, posX, 0);
+                newFigure = new Tshape(posX, 0);
                 break;
             case 3:
-                newFigure = new Straigth(color, posX, 0);
+                newFigure = new Straigth(posX, 0);
                 break;
             case 4:
-                newFigure = new Lshape(color, posX, 0);
+                newFigure = new Lshape(posX, 0);
                 break;
             case 5:
-                newFigure = new Sshape(color, posX, 0);
+                newFigure = new Sshape(posX, 0);
                 break;
             case 6:
-                newFigure = new Zshape(color, posX, 0);
+                newFigure = new Zshape(posX, 0);
                 break;
             default:
-                newFigure = new Jshape(color, posX, 0);
+                newFigure = new Jshape(posX, 0);
                 break;
         }
         return newFigure;
-    }
-    public static String getRandomColor(){
-        Random random = new Random();
-        int color = random.nextInt(7);
-        String newColor;
-        switch(color){
-            case 1:
-                newColor = "blue";
-                break;
-            case 2:
-                newColor = "green";
-                break;
-            case 3:
-                newColor = "yellow";
-                break;
-            case 4:
-                newColor = "orange";
-                break;
-            case 5:
-                newColor = "purple";
-                break;
-            case 6:
-                newColor = "pink";
-                break;
-            default:
-                newColor = "red";
-                break;
-        }
-        return newColor;
     }
     public static int getRandomX(){
         // random number from 30 to 210, 30 as step

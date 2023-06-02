@@ -1,3 +1,4 @@
+
 package main;
 
 import javax.swing.*;
@@ -5,14 +6,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Figure {
-    private String color;
-    private int [][] definition = new int [4][4];
+    protected Color color;
+    protected int [][] definition = new int [4][4];
     private ArrayList<Pixel> pixels = new ArrayList<>();
     private int posX;
     private int posY;
 
-    public Figure(String color, int posX, int posY) {
-        this.color = color;
+    public Figure(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
     }
@@ -37,25 +37,7 @@ public abstract class Figure {
         return this.posY = posY;
     }
     public Color getColor(){
-        switch(color) {
-            case "red":
-                return Color.RED;
-            case "blue":
-                return Color.BLUE;
-            case "green":
-                return Color.GREEN;
-            case "yellow":
-                return Color.YELLOW;
-            case "orange":
-                return Color.ORANGE;
-            case "purple":
-                return Color.MAGENTA;
-            case "pink":
-                return Color.PINK;
-            default:
-                return Color.BLACK;
-        }
-
+        return color;
     }
     public void assignPixels(int posX, int posY){
         for (int i = 0; i < definition.length; i++) {
@@ -82,17 +64,15 @@ public abstract class Figure {
     public ArrayList<Pixel> getPixels(){
         return pixels;
     }
-    public void changeDefinition(int [][] newDefinition){
-        this.definition = newDefinition;
-    }
+
     public void rotate(){
-        int [][] newDefinition = new int [4][4];
+        int [][] rotatedDefinition = new int [4][4];
         for (int i = 0; i < definition.length; i++) {
             for (int j = 0; j < definition[i].length; j++) {
-                newDefinition[i][j] = definition[definition.length - 1 - j][i];
+                rotatedDefinition[i][j] = definition[definition.length - 1 - j][i];
             }
         }
-        changeDefinition(newDefinition);
+        definition = rotatedDefinition;
     }
 
     public boolean canIMoveY(int [][] board){
