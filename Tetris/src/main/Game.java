@@ -9,10 +9,7 @@ import main.Shapes.*;
 
 
 public class Game{
-    private int speed = 100;
-    private int getSpeed() {
-        return speed;
-    }
+    private int speed = 1000;
     private int scoreMark = 1000;
 
     public Game() {
@@ -34,7 +31,7 @@ public class Game{
             MyGamePanel.getGamePanel().add(pixel.getPixel());
         }
 
-        Timer goingDownTimer = new Timer(getSpeed(), new ActionListener() {
+        Timer goingDownTimer = new Timer(speed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (figures.peek().canIMoveY(MyGamePanel.getPanelStatus())) {
@@ -87,8 +84,9 @@ public class Game{
                     score.updateScore(linesCleared);
                     score.repaint();
                     if (score.getScore() >= scoreMark) {
-                        speed = 100;
+                        speed -= 100;
                         scoreMark += 1000;
+                        goingDownTimer.setDelay(speed);
                     }
                 }
                 // Y axis
