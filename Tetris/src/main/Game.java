@@ -9,16 +9,20 @@ import main.Shapes.*;
 
 
 public class Game{
+    private int[] speed = {1000};
+    private int scoreMark = 1000;
 
     public Game() {
         Stack<Figure> figures = new Stack<>();
         Figure actualFigure = generateFigure();
         figures.push(actualFigure);
+        Score score = new Score();
         InitialFrame MyInitialFrame = new InitialFrame();
         JFrame frame = MyInitialFrame.getFrame();
         GamePanel MyGamePanel = new GamePanel();
         boolean[] isStopped = {false};
         frame.add(MyGamePanel.getGamePanel());
+        frame.add(score);
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
         actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
@@ -27,7 +31,7 @@ public class Game{
             MyGamePanel.getGamePanel().add(pixel.getPixel());
         }
 
-        Timer goingDownTimer = new Timer(1000, new ActionListener() {
+        Timer goingDownTimer = new Timer(speed[0], new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (figures.peek().canIMoveY(MyGamePanel.getPanelStatus())) {
@@ -49,11 +53,12 @@ public class Game{
         });
         checkIfStopped.start();
 
-        Timer laterals = new Timer(100, new ActionListener() {
+        Timer laterals = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 // X axis
+                int linesCleared = 0; // Variable para contar las líneas eliminadas
+
                 for (int row = 1; row < MyGamePanel.getPanelStatus().length - 1; row++) {
                     boolean full = true;
                     for (int col = 1; col < MyGamePanel.getPanelStatus()[row].length - 1; col++) {
@@ -63,6 +68,8 @@ public class Game{
                         }
                     }
                     if (full) {
+                        linesCleared++;
+
                         for (int col = 1; col < MyGamePanel.getPanelStatus()[row].length - 1; col++) {
                             MyGamePanel.getPanelStatus()[row][col] = 0;
                         }
@@ -73,7 +80,14 @@ public class Game{
                         }
                     }
                 }
-
+                if (linesCleared > 0) {
+                    score.updateScore(linesCleared);
+                    score.repaint();
+                    if (score.getScore() >= scoreMark) {
+                        speed[0] -= 100;
+                        scoreMark += 1000;
+                    }
+                }
                 // Y axis
                 for (int col = 1; col < MyGamePanel.getPanelStatus()[0].length - 1; col++) {
                     if (MyGamePanel.getPanelStatus()[1][col] == 1) {
@@ -85,6 +99,7 @@ public class Game{
             }
         });
         laterals.start();
+
 
         // add the keyboard movement
         frame.addKeyListener(new KeyAdapter() {

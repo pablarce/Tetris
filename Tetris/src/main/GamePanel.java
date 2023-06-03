@@ -66,7 +66,7 @@ public class GamePanel {
             panelStatus[panelStatus.length - 1][i] = 1; // Lado inferior
         }
 
-        gamePanel.setSize(gamePanelWidth, gamePanelHeight);
+        gamePanel.setSize(370, gamePanelHeight);
         gamePanel.setLayout(null);
         gamePanel.setFocusable(true);
         gamePanel.requestFocusInWindow();

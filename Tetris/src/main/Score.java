@@ -1,0 +1,86 @@
+package main;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Score extends JPanel{
+    private int score;
+    private int linesCleared;
+
+    public Score() {
+        setPreferredSize(new Dimension(200, 100));
+        score = 0;
+        linesCleared = 0;
+
+        setLayout(null);
+        setFocusable(true);
+        requestFocusInWindow();
+        repaint();
+    }
+
+    public void updateScore(int linesCleared) {
+        switch (linesCleared) {
+            case 1:
+                score += 100;
+                break;
+            case 2:
+                score += 300;
+                break;
+            case 3:
+                score += 500;
+                break;
+            case 4:
+                score += 800;
+                break;
+        }
+        this.linesCleared = linesCleared;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.setColor(Color.BLACK);
+        g.drawRect(380, 460, 250, 200);
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(380, 460, 250, 200);
+
+        Font scoreFont = new Font("Arial", Font.BOLD, 24);
+        g.setFont(scoreFont);
+        g.setColor(Color.WHITE);
+
+        String scoreText = "Score: " + score;
+        int x = 435;
+        int y = 500;
+        g.drawString(scoreText, x, y);
+
+        String clearText = "";
+        Color clearColor = Color.BLACK;
+
+        switch (linesCleared) {
+            case 1:
+                clearText = "SINGLE!";
+                clearColor = Color.RED;
+                break;
+            case 2:
+                clearText = "DOUBLE!";
+                clearColor = Color.GREEN;
+                break;
+            case 3:
+                clearText = "TRIPLE!";
+                clearColor = Color.BLUE;
+                break;
+            case 4:
+                clearText = "TETRIS!";
+                clearColor = Color.ORANGE;
+                break;
+        }
+
+        g.setColor(clearColor);
+        g.drawString(clearText, 435, 550);
+    }
+}
