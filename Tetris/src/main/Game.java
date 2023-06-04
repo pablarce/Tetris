@@ -22,7 +22,7 @@ public class Game{
         GamePanel MyGamePanel = new GamePanel();
         frame.add(MyGamePanel.getGamePanel());
         boolean[] isStopped = {false};
-        frame.add(score);
+        frame.add(score.getScorePanel());
 
         // for que recorre actualFigure.getPixels() y los agrega al gamePanel
         actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
@@ -82,7 +82,7 @@ public class Game{
                 }
                 if (linesCleared > 0) {
                     score.updateScore(linesCleared);
-                    score.repaint();
+                    score.getScorePanel().repaint();
                     if (score.getScore() >= scoreMark) {
                         speed -= 100;
                         scoreMark += 1000;
