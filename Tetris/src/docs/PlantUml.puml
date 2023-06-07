@@ -27,36 +27,43 @@ abstract class Figure{
 }
 class Square{
 -int [][] newDefinition=new int[][]
-+ Square(String,int,int)
+- Color squareColor
++ Square(int,int)
 
 }
 class Straigth{
 -int [][] newDefinition=new int[][]
-+ Straigth(String,int,int)
+- Color straigthColor
++ Straigth(int,int)
 }
 class Sshape{
 -int [][] newDefinition=new int[][]
-+ Sshape(String,int,int)
+- Color sShapeColor
++ Sshape(int,int)
 }
 class Zshape{
 -int [][] newDefinition=new int[][]
-+ Zshape(String,int,int)
+- Color zShapeColor
++ Zshape(int,int)
 
 }
 class Tshape{
 -int [][] newDefinition=new int[][]
-+ Tshape(String,int,int)
+- Color tShapeColor
++ Tshape(int,int)
 
 }
 class Lshape{
 -int [][] newDefinition=new int[][]
-+ Lshape(String,int,int)
+- Color lShapeColor
++ Lshape(int,int)
 
 
 }
 class Jshape{
 -int [][] newDefinition=new int[][]
-+ Jshape(String,int,int)
+- Color jShapeColor
++ Jshape(int,int)
 }
 class GamePanel{
 - int[][] panelStatus = new int[][]
@@ -77,9 +84,15 @@ class Pixel{
     - int posY;
     - Color color;
     - JPanel pixel;
+    + void setPosX(int)
+    + void setPosY(int posY)
+    + int getPosX()
+    + int getPosY()
+    + Color getColor()
     + JPanel getPixel()
-+ void setPosX(int)
-      + void setPosY(int )
+    + Pixel(int,int,Color)
+
+
 }
 class InitialFrame{
  - JFrame frame
@@ -89,14 +102,22 @@ class InitialFrame{
  + static int getRandomX()
 }
 class Game{
-- final int pixelWidth
-    - final int pixelHeight
+    - int speed
+    - int scoreMark
     + Game()
 + static Figure generateFigure()
-
-
++ static int getRandomX()
++ static void newFigure(GamePanel,Stack<Figure>)
 }
-
+class Score{
+    - int score
+    - int linesCleared
+    - JPanel scorePanel
+    + Score()
+    + void updateScore(int)
+    + int getScore()
+    + JPanel getScorePanel()
+}
 Figure <|-- Straigth
 Figure <|-- Square
 Figure <|-- Sshape
@@ -110,7 +131,7 @@ Figure --* Pixel
 GamePanel *-- Game
 InitialFrame *-- Game
 Figure *-- Game
-
+Score *-- Game
 
 
 @enduml

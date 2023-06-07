@@ -77,9 +77,15 @@ class Pixel{
     - int posY;
     - Color color;
     - JPanel pixel;
+    + void setPosX(int)
+    + void setPosY(int posY)
+    + int getPosX()
+    + int getPosY()
+    + Color getColor()
     + JPanel getPixel()
-+ void setPosX(int)
-      + void setPosY(int )
+    + Pixel(int,int,Color)
+
+
 }
 class InitialFrame{
  - JFrame frame
@@ -89,14 +95,22 @@ class InitialFrame{
  + static int getRandomX()
 }
 class Game{
-- final int pixelWidth
-    - final int pixelHeight
+    - int speed
+    - int scoreMark
     + Game()
 + static Figure generateFigure()
-
-
++ static int getRandomX()
++ static void newFigure(GamePanel,Stack<Figure>)
 }
-
+class Score{
+    - int score
+    - int linesCleared
+    - JPanel scorePanel
+    + Score()
+    + void updateScore(int)
+    + int getScore()
+    + JPanel getScorePanel()
+}
 Figure <|-- Straigth
 Figure <|-- Square
 Figure <|-- Sshape
@@ -110,7 +124,7 @@ Figure --* Pixel
 GamePanel *-- Game
 InitialFrame *-- Game
 Figure *-- Game
-
+Score *-- Game
 
 
 @enduml
