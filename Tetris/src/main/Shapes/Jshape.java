@@ -13,7 +13,7 @@ public class Jshape extends Figure {
         newDefinition[2][1] = 1;
         newDefinition[2][2] = 1;
         newDefinition[2][3] = 1;
-        definition=newDefinition;
+        this.definition = newDefinition;
         this.color = jShapeColor;
     }
 }

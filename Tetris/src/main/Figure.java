@@ -27,7 +27,7 @@ public abstract class Figure {
 
     public int[][] getDefinition() {
         return definition;
-    }
+    } //Only for testing purposes
 
     public int getPosX(){
         return posX;
