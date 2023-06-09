@@ -24,6 +24,11 @@ public abstract class Figure {
             System.out.println();
         }
     }
+
+    public int[][] getDefinition() {
+        return definition;
+    }
+
     public int getPosX(){
         return posX;
     }
