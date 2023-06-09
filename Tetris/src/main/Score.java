@@ -7,7 +7,8 @@ public class Score{
     private int score;
     private int linesCleared;
     boolean gameOver = false;
-    boolean read = false;
+    boolean read = false; //Only repaints once(avoids flickering)
+
     private JPanel scorePanel = new JPanel(){
         @Override
         protected void paintComponent(Graphics g) {
@@ -91,6 +92,10 @@ public class Score{
         this.gameOver = true;
         if (!this.read){scorePanel.repaint();}
         this.read = true;
+    }
+
+    public boolean getGameOver(){ //For testing purposes
+        return this.gameOver;
     }
 
     public int getScore() {

@@ -113,10 +113,12 @@ class Score{
     - int score
     - int linesCleared
     - JPanel scorePanel
+    - boolean gameOver
     + Score()
     + void updateScore(int)
     + int getScore()
     + JPanel getScorePanel()
+    + void gameOver()
 }
 Figure <|-- Straigth
 Figure <|-- Square

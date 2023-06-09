@@ -45,6 +45,13 @@ public class ScoreTest {
     }
 
     @Test
+    public void gameOver(){
+        Score score = new Score();
+        score.gameOver();
+        assertTrue(score.getGameOver());
+    }
+
+    @Test
     public void getScorePanel() {
         Score score = new Score();
         JPanel scorePanel = score.getScorePanel();
