@@ -2,6 +2,7 @@ package test;
 
 import main.Figure;
 import main.Pixel;
+import org.junit.Before;
 import org.junit.Test;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -9,10 +10,11 @@ import static org.junit.Assert.*;
 
 
 public class FigureTest {
+   Figure figure;
 
     @Test
     public void testGetSetPosX() {
-        Figure figure = new Figure(0, 0) {
+         figure = new Figure(0, 0) {
             @Override
             public void draw() {
                 super.draw();
@@ -25,7 +27,7 @@ public class FigureTest {
 
     @Test
     public void testGetSetPosY() {
-        Figure figure = new Figure(0, 0) {
+         figure = new Figure(0, 0) {
             @Override
             public void draw() {
                 super.draw();
@@ -38,7 +40,7 @@ public class FigureTest {
 
     @Test
     public void testGetColor() {
-        Figure figure = new Figure(0, 0) {
+         figure = new Figure(0, 0) {
             @Override
             public void draw() {
                 super.draw();
@@ -65,7 +67,7 @@ public class FigureTest {
 
     @Test
     public void testRotate() {
-        Figure figure = new Figure(0, 0) {
+         figure = new Figure(0, 0) {
             @Override
             public void draw() {
                 super.draw();

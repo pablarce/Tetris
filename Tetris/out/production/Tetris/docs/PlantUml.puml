@@ -14,6 +14,7 @@ abstract class Figure{
 + int getPosY()
 + int setPosY(int)
 + Color getColor()
++ int[][] getDefinition()
 + void assignPixels(int, int)
  + void reAssignPixels(int, int)
  + ArrayList<Pixel> getPixels()
@@ -72,7 +73,7 @@ class GamePanel{
     - final int cellWidth
     - final int cellHeight
      - JPanel gamePanel
- + GamePanel() {
+ + GamePanel()
 + JPanel getGamePanel()
 + int[][] getPanelStatus()
 + void paintPanel(int,int,Color)
@@ -98,8 +99,7 @@ class InitialFrame{
  - JFrame frame
  + InitialFrame()
   + JFrame getFrame()
-+ static String getRandomColor()
- + static int getRandomX()
+
 }
 class Game{
     - int speed

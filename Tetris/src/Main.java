@@ -5,34 +5,15 @@ import main.Shapes.*;
 public class Main {
     public static void main(String[] args) {
 
-        Figure figure1, figure2, figure3, figure4, figure5, figure6, figure7;
-
-        figure1 = new Square(0, 10);
-        figure2 = new Tshape(10,10);
-        figure3 = new Straigth(20,10);
-        figure4 = new Lshape(30,10);
-        figure5 = new Sshape(400,10);
-        figure6 = new Zshape(50,10);
-        figure7 = new Jshape(60,10);
-
-        figure1.draw();
-        spacing();
-        figure2.draw();
-        spacing();
-        figure3.draw();
-        spacing();
-        figure4.draw();
-        spacing();
-        figure5.draw();
-        spacing();
-        figure6.draw();
-        spacing();
-        figure7.draw();
+        System.out.printf("Welcome to our game. We are a group called DuoSacapuntos composed of Pablo Arce and Rubén Setién, who have developed our own version of the famous game TETRIS.");
+        System.out.printf("");
+        System.out.printf("The controls are very simple. ");
+        System.out.printf("To move from side to side along the horizontal axis: [A][D] or [←][→]");
+        System.out.printf("To make the piece drop faster: [S] or [↓]");
+        System.out.printf("To rotate the piece: [W] or [↑]");
 
         new Game();
 
     }
-    static void spacing(){
-        System.out.println("- ".repeat(6));
-    }
+
 }
