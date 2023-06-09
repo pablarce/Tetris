@@ -24,7 +24,6 @@ public class Game{
         boolean[] isStopped = {false};
         frame.add(score.getScorePanel());
 
-        // for que recorre actualFigure.getPixels() y los agrega al gamePanel
         actualFigure.assignPixels(actualFigure.getPosX(), actualFigure.getPosY());
 
         for (Pixel pixel : actualFigure.getPixels()) {
@@ -91,8 +90,11 @@ public class Game{
                 }
                 // Y axis
                 for (int col = 1; col < MyGamePanel.getPanelStatus()[0].length - 1; col++) {
-                    if (MyGamePanel.getPanelStatus()[1][col] == 1) {
+                    if (MyGamePanel.getPanelStatus()[1][col] != 0) {
                         isStopped[0] = true;
+                        goingDownTimer.stop();
+                        checkIfStopped.stop();
+                        score.gameOver();
                         break;
                     }
                 }
@@ -102,7 +104,6 @@ public class Game{
         laterals.start();
 
 
-        // add the keyboard movement
         frame.addKeyListener(new KeyAdapter() {
             private boolean wKeyPressed = false;
             @Override

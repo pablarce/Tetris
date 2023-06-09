@@ -6,6 +6,8 @@ import java.awt.*;
 public class Score{
     private int score;
     private int linesCleared;
+    boolean gameOver = false;
+    boolean read = false;
     private JPanel scorePanel = new JPanel(){
         @Override
         protected void paintComponent(Graphics g) {
@@ -21,7 +23,7 @@ public class Score{
             g.setColor(Color.WHITE);
 
             String scoreText = "Score: " + score;
-            int x = 435;
+            int x = 445;
             int y = 500;
             g.drawString(scoreText, x, y);
 
@@ -48,7 +50,12 @@ public class Score{
             }
 
             g.setColor(clearColor);
-            g.drawString(clearText, 435, 550);
+            g.drawString(clearText, 455, 550);
+
+            if (gameOver) {
+                g.setColor(Color.RED);
+                g.drawString("GAME OVER!", 430, 600);
+            }
         }
     };
 
@@ -79,6 +86,11 @@ public class Score{
                 break;
         }
         this.linesCleared = linesCleared;
+    }
+    public void gameOver() {
+        this.gameOver = true;
+        if (!this.read){scorePanel.repaint();}
+        this.read = true;
     }
 
     public int getScore() {

@@ -11,7 +11,7 @@ public class Zshape extends main.Figure{
         newDefinition[1][2] = 1;
         newDefinition[2][2] = 1;
         newDefinition[2][3] = 1;
-        definition=newDefinition;
-        this.color= tShapeColor;
+        definition = newDefinition;
+        this.color = tShapeColor;
     }
 }
