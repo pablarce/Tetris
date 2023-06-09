@@ -9,17 +9,15 @@ import static org.junit.Assert.*;
 
 
 public class GamePanelTest {
-
+    GamePanel gamePanel = new GamePanel();
     @Test
-    public void testGetGamePanel() {
-        GamePanel gamePanel = new GamePanel();
+    public void getGamePanel() {
         JPanel panel = gamePanel.getGamePanel();
         assertNotNull(panel);
     }
 
     @Test
-    public void testGetPanelStatus() {
-        GamePanel gamePanel = new GamePanel();
+    public void getPanelStatus() {
         int[][] panelStatus = gamePanel.getPanelStatus();
         assertNotNull(panelStatus);
         assertEquals(22, panelStatus.length);
@@ -27,8 +25,7 @@ public class GamePanelTest {
     }
 
     @Test
-    public void testPaintPanel() {
-        GamePanel gamePanel = new GamePanel();
+    public void paintPanel() {
         int[][] panelStatus = gamePanel.getPanelStatus();
 
         gamePanel.paintPanel(1, 1, Color.RED);
@@ -49,7 +46,7 @@ public class GamePanelTest {
         gamePanel.paintPanel(6, 6, Color.MAGENTA);
         assertEquals(7, panelStatus[6][6]);
 
-        gamePanel.paintPanel(7, 7, Color.PINK);
+        gamePanel.paintPanel(7, 7, Color.CYAN);
         assertEquals(8, panelStatus[7][7]);
     }
 

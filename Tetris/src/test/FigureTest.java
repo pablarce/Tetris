@@ -90,8 +90,8 @@ public class FigureTest {
 
     @Test
     public void rotate() {
-        Figure straigth = new Straigth(0,0);
-        straigth.rotate();
+        Figure straight = new Straigth(0,0);
+        straight.rotate();
 
         int [][] expected = new int [4][4];
         expected[0][2] = 1;
@@ -99,7 +99,7 @@ public class FigureTest {
         expected[2][2] = 1;
         expected[3][2] = 1;
 
-        assertEquals(expected, straigth.getDefinition());
+        assertEquals(expected, straight.getDefinition());
     }
 
     @Test

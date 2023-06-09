@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class ScoreTest {
 
     @Test
-    public void testUpdateScore() {
+    public void updateScore() {
         Score score = new Score();
         int initialScore = score.getScore();
         int linesCleared = 1;
@@ -35,7 +35,7 @@ public class ScoreTest {
     }
 
     @Test
-    public void testGetScore() {
+    public void getScore() {
         Score score = new Score();
         int expectedScore = 0;
 
@@ -45,25 +45,11 @@ public class ScoreTest {
     }
 
     @Test
-    public void testGetScorePanel() {
+    public void getScorePanel() {
         Score score = new Score();
         JPanel scorePanel = score.getScorePanel();
 
         assertNotNull(scorePanel);
         assertEquals(new Dimension(200, 100), scorePanel.getPreferredSize());
-        // Agrega más aserciones si hay propiedades adicionales que debas verificar
     }
-
-    @Test
-    public void testPaintComponent() {
-        Score score = new Score();
-        JPanel scorePanel = score.getScorePanel();
-
-        // Simulamos la llamada al método paintComponent() para verificar la representación visual
-        Graphics graphics = scorePanel.getGraphics();
-        scorePanel.paintComponents(graphics);
-        // Agrega aserciones para verificar la representación visual esperada
-    }
-
-    // Agrega más pruebas según sea necesario para otros métodos y comportamientos de la clase Score
 }

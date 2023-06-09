@@ -47,7 +47,7 @@ public class Game{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!figures.peek().canIMoveY(MyGamePanel.getPanelStatus())) {
-                    newFigure(MyGamePanel, figures);
+                    replaceFigure(MyGamePanel, figures);
                 }
             }
         });
@@ -197,7 +197,7 @@ public class Game{
         return posX*30 + 30;
     }
 
-    public static void newFigure(GamePanel MyGamePanel, Stack<Figure> figures){
+    public static void replaceFigure(GamePanel MyGamePanel, Stack<Figure> figures){
         Figure newFigure = generateFigure();
         for (Pixel pixel : figures.peek().getPixels()) {
             MyGamePanel.paintPanel(pixel.getPosX()/30, pixel.getPosY()/30, pixel.getColor());

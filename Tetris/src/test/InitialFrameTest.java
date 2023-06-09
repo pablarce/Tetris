@@ -7,22 +7,18 @@ import java.awt.Dimension;
 import static org.junit.Assert.*;
 
 public class InitialFrameTest {
+    InitialFrame initialFrame = new InitialFrame();
 
     @Test
     public void testGetFrame() {
-        InitialFrame initialFrame = new InitialFrame();
-
         JFrame frame = initialFrame.getFrame();
         assertNotNull(frame);
         assertEquals("Tetris", frame.getTitle());
         assertTrue(frame.isVisible());
-
     }
 
     @Test
     public void testMinimumSize() {
-        InitialFrame initialFrame = new InitialFrame();
-
         JFrame frame = initialFrame.getFrame();
         Dimension minimumSize = frame.getMinimumSize();
         assertNotNull(minimumSize);
